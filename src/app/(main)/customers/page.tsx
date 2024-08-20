@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import CustomerTable from "@/components/CustomerTable";
+import CustomerTable from "@/app/components/CustomerTable";
 
 const Customer = () => {
   const router = useRouter();

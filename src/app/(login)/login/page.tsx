@@ -1,17 +1,38 @@
 "use client";
 
-import CustomInput from "@/components/CustomInput";
+import CustomInput from "@/app/components/CustomInput";
+import axios from "axios";
+import Cookies from "js-cookie";
 import React, { useState } from "react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleSubmit = async () => {try {
+    const response = await axios.post('http:localhost:8000',
+      {
+          email:email,
+          password: password
+    },
+    {
+      headers:{
+        "Content-Type": "Application/json"
+      }
+    })
+    const token= response.data.token;
+    Cookies.set("token",token);
+    
+  } catch (error) {
+    console.error(error)
+  }
+  }
+  
   return (
-    <div className="bg-white border-double rounded-2xl border-4  justify-center mt-20 ml-60">
+    <div className="bg-white border-double rounded-2xl border-4 h-90 w-[550px] justify-center ml-80 mt-20">
       <form
         action="html"
-        className=" w-[600px] py-6  flex justify-center  flex-col items-center "
+        className=" w-[600px] py-6 -ml-6 flex justify-center flex-col items-center "
       >
         <br />
         <CustomInput

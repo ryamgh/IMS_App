@@ -1,4 +1,4 @@
-import Axios from "@/components/Axios";
+import Axios from "@/app/components/Axios";
 import Image from "next/image";
 
 export default function Home() {
